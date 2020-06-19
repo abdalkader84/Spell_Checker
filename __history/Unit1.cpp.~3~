@@ -1,0 +1,26 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "Unit1.h"
+#include "hash_class.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TForm1 *Form1;
+hash_table tbl(25000);
+//---------------------------------------------------------------------------
+__fastcall TForm1::TForm1(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
+void __fastcall TForm1::FormCreate(TObject *Sender)
+{
+	Memo1->Lines->LoadFromFile("..\\..\\EN_Word_25.txt");
+	for (int i=0; i<Memo1->Lines->Count; i++) {
+		tbl.insert(Memo1->Lines->Strings[i],Memo1->Lines->Strings[i]);
+	}
+}
+//---------------------------------------------------------------------------
